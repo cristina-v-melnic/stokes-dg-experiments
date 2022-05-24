@@ -1,0 +1,45 @@
+[ TimeNavierStokes parameter database ]
+
+# Inverse of viscosity number
+RE_NR: 10.0 
+verbosity: 3 
+example: 5 
+degree_polynomial : 0
+is_RT_polynomial : false
+boundary_file: Default_UnitSquare 
+geo_file: TwoTriangles 
+symmetry_DG : 1
+face_sigma_DG: 5.0 
+VELOCITY_SPACE: 1011 
+refinement_n_initial_steps: 3 
+outfile: ../Optimal_sigma_ref1_2021-12-08_06-26-47/polynomial_solution.h/BDM1_sigma=5.0/output_files/ref_3_sigma_5.0e+00_velocity_1011_example_5.out 
+output_directory: ../Optimal_sigma_ref1_2021-12-08_06-26-47/polynomial_solution.h/BDM1_sigma=5.0/xdmf_files 
+output_basename: ref_3_sigma_5.0e+00_velocity_1011_example_5 
+
+separate_h5_files: false 
+nonlinloop_maxit: 100 
+nonlinloop_epsilon: 1e-10 
+nonlinloop_slowfactor: 1.0 
+reynolds_number: 10.0 
+
+output_write_xdmf: true 
+output_xdmf_format: 1 
+script_mode: true 
+PRESSURE_SPACE: -4711 
+NSTYPE: 3 
+LAPLACETYPE: 0 
+nse_nonlinear_form: convective 
+space_discretization_type: dg 
+output_compute_errors: true 
+FLOW_PROBLEM_TYPE: 3 
+USE_ISOPARAMETRIC: 0 
+solver_type : direct
+direct_solver_type : umfpack
+solver_verbosity : 2
+max_n_iterations : 10000
+iterative_solver_type : fgmres
+residual_tolerance : 1.e-12
+preconditioner: vanka_cell
+INTERNAL_PROBLEM_LINEAR : 1
+damping_factor: 0.5
+multigrid_vanka_damp_factor: 0.5

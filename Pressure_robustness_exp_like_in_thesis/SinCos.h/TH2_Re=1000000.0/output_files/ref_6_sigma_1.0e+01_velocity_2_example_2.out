@@ -1,0 +1,185 @@
+INFO (Domain): Trying to find a default geometry and mesh  for TwoTriangles and Default_UnitSquare
+INFO (Domain): Loading default domain description: Default_UnitSquare.
+# current date and time: Thu Dec  2 05:39:56 2021
+# ParMooN hg revision: cdaeaa868138
+# ParMooN hg branch  : default
+# ParMooN, local changes: false
+# ParMooN build information: RELEASE, SEQUENTIAL
+# hostname: erhard-10
+# A ParMooN parameter database with 45 parameters and 0 nested databases
+
+# The name of the database.
+[ TimeNavierStokes parameter database ]
+
+outfile: ../Reynolds_nr_Scaling_2021-11-29_19-28-37/SinCos.h/TH2_Re=1000000.0/output_files/ref_6_sigma_1.0e+01_velocity_2_example_2.out
+problem_type: 0
+output_write_ps: false
+verbosity: 3
+script_mode: true
+write_snaps: false
+compute_POD_basis: false
+ROM_method: false
+RE_NR: 1000000.0
+example: 2
+degree_polynomial: 0
+is_RT_polynomial: false
+boundary_file: Default_UnitSquare
+geo_file: TwoTriangles
+symmetry_DG: 1
+face_sigma_DG: 10
+VELOCITY_SPACE: 2
+refinement_n_initial_steps: 6
+output_directory: ../Reynolds_nr_Scaling_2021-11-29_19-28-37/SinCos.h/TH2_Re=1000000.0/xdmf_files
+output_basename: ref_6_sigma_1.0e+01_velocity_2_example_2
+separate_h5_files: false
+nonlinloop_maxit: 100
+nonlinloop_epsilon: 1.000000000000000e-10
+nonlinloop_slowfactor: 1.0
+reynolds_number: 1000000.0
+output_write_xdmf: true
+output_xdmf_format: 1
+PRESSURE_SPACE: -4711
+NSTYPE: 3
+LAPLACETYPE: 0
+nse_nonlinear_form: convective
+space_discretization_type: galerkin
+output_compute_errors: true
+FLOW_PROBLEM_TYPE: 3
+USE_ISOPARAMETRIC: 0
+solver_type: direct
+direct_solver_type: umfpack
+solver_verbosity: 2
+max_n_iterations: 10000
+iterative_solver_type: fgmres
+residual_tolerance: 1.000000000000000e-12
+preconditioner: vanka_cell
+INTERNAL_PROBLEM_LINEAR: 1
+damping_factor: 0.5
+multigrid_vanka_damp_factor: 0.5
+>>> Start printing old database (ParamDB) <<<
+HOSTNAME: erhard-10 started on Thu Dec  2 05:39:56 2021
+
+EXECUTED FILE: ./../build/nse2d
+VERSION: 1
+MapperType: 1
+ANSATZ_ORDER: 2
+VELOCITY_SPACE: 2
+PRESSURE_SPACE: -4711
+UPWIND_ORDER: 0
+UPWIND_FLUX_DAMP: 1
+UPWIND_APPLICATION: 0
+NSTYPE: 3
+SIGMA_PERM: 1
+LAPLACETYPE: 0
+USE_ISOPARAMETRIC: 0
+CELL_MEASURE: 0
+FACE_SIGMA: 1
+WEAK_BC_SIGMA: 1
+WEAK_BC: 0
+RE_NR: 1e+06
+FLOW_PROBLEM_TYPE: 3
+PE_NR: 1
+DELTA0: 1
+SDFEM_TYPE: 2
+DELTA1: 1
+CIP_TYPE: 0
+SOLD_TYPE: 0
+SOLD_PARAMETER_TYPE: 11
+SOLD_CONST: 1
+SOLD_POWER: 1
+SOLD_S: 1
+SOLD_U0: 1
+SOLD_PARAMETER_SCALING: 0
+SOLD_PARAMETER_SCALING_FACTOR: 1
+FILTER_WIDTH_CONSTANT: 2
+FILTER_WIDTH_POWER: 1
+GAUSSIAN_GAMMA: 6
+TURBULENT_VISCOSITY_TYPE: 1
+TURBULENT_VISCOSITY_TENSOR: 0
+TURBULENT_VISCOSITY_CONSTANT: 0.01
+TURBULENT_VISCOSITY_POWER: 1
+TURBULENT_VISCOSITY_SIGMA: 6
+ARTIFICIAL_VISCOSITY_CONSTANT: 1
+ARTIFICIAL_VISCOSITY_POWER: 1
+FRICTION_CONSTANT: 0
+FRICTION_POWER: 0
+FRICTION_TYPE: 0
+FRICTION_U0: 1
+PENETRATION_CONSTANT: 1e+12
+PENETRATION_POWER: -2
+DIV_DIV_STAB_TYPE: 0
+DIV_DIV_STAB_C1: 2
+DIV_DIV_STAB_C2: 1
+OSEEN_ZERO_ORDER_COEFF: 0
+LP_FULL_GRADIENT: 0
+LP_STREAMLINE: 0
+LP_DIVERGENCE: 0
+LP_PRESSURE: 0
+LP_COEFF_TYPE: 0
+LP_FULL_GRADIENT_COEFF: 0
+LP_STREAMLINE_COEFF: 0
+LP_PRESSURE_COEFF: 0
+LP_FULL_GRADIENT_EXPONENT: 1
+LP_STREAMLINE_EXPONENT: 1
+LP_PRESSURE_EXPONENT: 1
+LP_ORDER_DIFFERENCE: 1
+LP_FULL_GRADIENT_ORDER_DIFFERENCE: 1
+LP_STREAMLINE_ORDER_DIFFERENCE: 1
+LP_PRESSURE_ORDER_DIFFERENCE: 1
+P0: 0
+P1: 0
+P2: 0
+P3: 0
+P4: 0
+P5: 0
+P6: 0
+P7: 0
+P8: 0
+P9: 0
+P10: 0
+P11: 0
+P12: 0
+P13: 0
+P14: 0
+P15: 0
+VORTICITY THICKNESS FOR MIXING LAYER (P8): 0
+VMS_ADAPT_LOWER: 0.25
+VMS_ADAPT_MIDDLE: 1
+VMS_ADAPT_UPPER: 3
+VMS_ADAPT_COMP: 1
+SUPERCONVERGENCE_ORDER: 0
+INPUT_QUAD_RULE: 0
+Example: 2d (Navier-)Stokes SinCos.h.
+WARNING (The parameter problem_type doesn't correspond neither to NSE nor to Stokes or Brinkman. It is now reset to the default value for NSE (=5).): 
+velocity space         2
+pressure space         1
+INFO (Pressure Projection): BlockFEMatrix identified as enclosed-flow saddle point matrix. Pressure projection enabled.
+STATS (NavierStokes): Mesh data and problem size on finest grid
+ > N_Cells            :        8192
+ > h(min, max)        :   0.0220971          0.0220971
+ > dof velocity       :       33282
+ > dof velocity active:       32258
+ > dof pressure       :        4225
+ > dof total          :       37507
+Quadrature formula for triangles is Degree9Tria
+--- TIME: time for solving procedure: 2.05213, 2.05432 s (CPU time, wall time)
+u0 min -0.000941673192478  max 1.01053672161
+u1 min -3.14159265359  max 3.14159265359
+p min -1.00040171013  max 1.00040171013
+ DataWriter:: writing ../Reynolds_nr_Scaling_2021-11-29_19-28-37/SinCos.h/TH2_Re=1000000.0/xdmf_files/ref_6_sigma_1.0e+01_velocity_2_example_2.xdmf
+--- TIME: time for writing vtk/xdmf files: 0.052859, 0.0815899 s (CPU time, wall time)
+Maximal pointwise error appeared in: 0.985074 0.0170228 value: 0.0239963
+Maximal pointwise error appeared in: 0.0235987 0.984697 value: 0.0212321
+Maximal pointwise error appeared in: 0.00827903 0.491721 value: 0.000331793
+--------------------------------------------
+STATS (NavierStokes): Measured errors
+ > L2(u)     : 0.0079477158637968
+ > L2(div(u)): 3.884674146726
+ > H1-semi(u): 3.9573246527289
+ > L2(p)     : 0.00010045635859413
+ > H1-semi(p): 0.054535565670255
+ > L2(u)_boundary: 0
+ > L2(u.n)_boundary: 0
+--------------------------------------------
+INFO (Example_NSE2D): No post processing done for the current example.
+--- TIME: time for complete NSE2D_ParMooN program: 18.1608, 18.1918 s (CPU time, wall time)

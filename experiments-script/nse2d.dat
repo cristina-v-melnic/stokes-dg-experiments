@@ -1,0 +1,670 @@
+# A ParMooN parameter database with 130 parameters and 0 nested databases
+
+[ TimeNavierStokes parameter database ]
+
+## This is the file where all output of ParMooN is (usually) written 
+## to. In general ParMooN produces text output on the console as well 
+## as in this file. For this to properly work, you should call 
+## `Output::set_outfile(db["outfile"]);` in your main program. 
+outfile: default_parmoon_outfile.out   { default_parmoon_outfile.out }
+
+## Determine which kind of problem you want to solve. A value of 0 means 
+## not set. Other values have the following meanings: 1: stationary 
+## convection-diffusion, 2: time-dependent 
+## convection-diffusion, 3: stationary Stokes, 4: time-dependent 
+## Stokes, 5: stationary Navier-Stokes, 6: time-dependent 
+## Navier-Stokes 7: Brinkman. 
+problem_type: 6   [ 0, 7 ]
+
+## Draw a postscript file of the domain. This only works in two space 
+## dimensions. Usually this is used in the main program. 
+output_write_ps: false   { true, false }
+
+## Set the verbosity of ParMooN. The higher the number, the more will 
+## output you will get. Such output will be written to console and the 
+## 'outfile'. 
+verbosity: 1   [ 1, 5 ]
+
+## Set ParMooN into script mode. This means all output is written to 
+## the outfile and not to console. 
+script_mode: false   { true, false }
+
+## Write Snapshots. If set to true, snapshots of the numerical 
+## solution will be written into a file. 
+write_snaps: false   { true, false }
+
+## Compute the POD basis from snapshots. Snapshots have to be already 
+## available in 'db[snaps_directory]/db[snaps_basename]', or 
+## can be acquire by activating the parameter 'db[write_snaps]'. 
+compute_POD_basis: false   { true, false }
+
+## Solve the PDE using Reduced Order Modelling. The POD basis has to be 
+## already available in 
+## 'db[pod_directory]/db[pod_basename].pod' or can be computed 
+## by activating the parameter 'db[compute_POD_basis]'. 
+ROM_method: false   { true, false }
+
+## This is a file describing the boundary of the computational 
+## domain. You probably want to adjust this to be the path to some file 
+## which typically has the extension 'PRM'. See the documentation 
+## for GEO and PRM files. 
+boundary_file: Default_UnitSquare   { , Default_Block_1x2x3, Default_UnitCube, Default_UnitSquare }
+
+## This files describes the computational mesh. You probably want to 
+## adjust this to be the path to some file which typically has the 
+## extension 'GEO', 'xGEO', or '.mesh'. See the documentation for 
+## GEO and PRM files. 
+geo_file: UnitSquare   { Default_Block_1x2x3_Hexa, Default_Block_1x2x3_Tetra, Default_UnitCube_Hexa, Default_UnitCube_Tetra, TwoTriangles, UnitSquare }
+
+## This is the number of refinement steps before any computation 
+## starts. Usually the mesh is uniformly refined. In a multigrid 
+## program, this determines the number of uniform refinements until 
+## the finest mesh. 
+refinement_n_initial_steps: 0   [ 0, 20 ]
+
+## The number of refinement steps before the domain is partitioned. 
+## This parameter is only useful in mpi mode. It has to be smaller or 
+## equal to 'refinement_n_initial_steps', larger values mean 
+## equal to 'refinement_n_initial_steps'. The mesh needs to be fine 
+## enough to be partitioned. Therefore the default is to partition on 
+## the finest mesh. Note that if you use multigrid this value is not 
+## considered and the partitioning is done on the coarsest multigrid 
+## level 
+refinement_n_steps_before_partitioning: 100   [ 0, 100 ]
+
+## A maximum number of adaptive refinement steps which may be applied 
+## to this domain. 
+refinement_max_n_adaptive_steps: 0   [ 0, 1000 ]
+
+## A maximum number of uniform refinement steps which may be applied 
+## to this domain. 
+refinement_max_n_uniform_steps: 0   [ 0, 1000 ]
+
+## If this is set to true, the domain will be refined as usual except the 
+## last refinement step is not uniform but barycentric. Then the 
+## Scott-Vogelius finite element pair is inf-sup stable. If 
+## 'refinement_n_initial_steps' is zero, this parameter has no 
+## effect. NOTE: This is not yet correctly implemented, you have to do 
+## this by hand. 
+refinement_final_step_barycentric: false   { true, false }
+
+## Chose whether conforming grid or not 
+conforming_closure: true   { true, false }
+
+## If this is set true then the mesh is writtenafter refinment in .ps 
+## format. Useful in adaptive refinments 
+write_adaptive_mesh: false   { true, false }
+
+## This Boolean will state if you read a file which contains the 
+## partition of the cells on the processors. 
+read_metis: false   { true, false }
+
+## The Mesh-file will be read here. 
+read_metis_file: mesh_partitioning_file.txt   { mesh_partitioning_file.txt }
+
+## This Boolean will state if you write out which cell belongs to which 
+## processor into a file (see parameter 'write_metis_file'. 
+write_metis: false   { true, false }
+
+## The partitioning of the mesh will be written here. 
+write_metis_file: mesh_partitioning_file.txt   { mesh_partitioning_file.txt }
+
+## If 'true', then this domain shouldbe constructed as a sandwich 
+## grid from a 2d geometry and mesh. 
+sandwich_grid: false   { true, false }
+
+## List of vectors defining the translation between periodic 
+## boundaries. 
+periodic_translations: (0.0)   [ 0.0, 0.0 ]
+
+## Determine how many levels to use in the grid hierarchy. Note that 
+## this determines the number of geometrical grids to use, so if you 
+## use mdml the multigrid cycle will be multigrid_n_levels + 1 levels 
+## deep, since the finest geometrical grid is used twice. 
+multigrid_n_levels: 2   [ 0, 5 ]
+
+## The type of multigrid algorithm to apply. Besides the standard 
+## approach a 'multiple discretization multilevel' approach is 
+## available (for those systems where it is already implemented). 
+## See e.g. John et al. 2002. 
+multigrid_type: standard   { mdml, standard }
+
+## The recursion type how to traverse the multigrid levels. So far the 
+## three standard cycle V, W and F are implemented. 
+multigrid_cycle_type: V   { F, V, W }
+
+## The smoother to use on all but the coarsest level. You should take 
+## care, that the smoother you chose fits your problem type, e.g. 
+## Vanka smoothers are best fitted for saddle point problems. 
+multigrid_smoother: nodal_vanka   { cell_vanka, cell_vanka_jacobi, cell_vanka_store, jacobi, no_smoother, nodal_vanka, nodal_vanka_store, patch_vanka, patch_vanka_store, sor }
+
+## The smoother to use on the coarsest level. You should take care, 
+## that the smoother you chose fits your problem type, e.g. Vanka 
+## smoothers are best fitted for saddle point problems. 
+multigrid_smoother_coarse: direct_solve   { cell_vanka, cell_vanka_jacobi, cell_vanka_store, direct_solve, jacobi, no_smoother, nodal_vanka, nodal_vanka_store, patch_vanka, patch_vanka_store, sor }
+
+## The damping factor which is used when applying the coarse grid 
+## correction to a finer grid. A factor of 1.0 means no damping, a 
+## factor of 0.0 means nothing changes. 
+multigrid_correction_damp_factor: 1.0   [ 0.0, 1.0 ]
+
+## The number of smoothing steps to apply per level before going down 
+## to the next coarsest level. 
+multigrid_n_pre_smooth: 1   [ 0, 10 ]
+
+## The number of smoothing steps to apply per level after coming up 
+## from the next coarsest level. 
+multigrid_n_post_smooth: 1   [ 0, 10 ]
+
+## The target residual on the coarsest grid. When this residual is 
+## reached on the coarsest grid by solving or smoothing, the coarse 
+## level will return and the process continue on the next finest 
+## level. 
+multigrid_coarse_residual: 0.1   [ 0.0, 1.0 ]
+
+## The maximal number of solver/smoother iterations to be performed 
+## whenever working on the coarsest level. 
+multigrid_coarse_max_n_iterations: 10   [ 1, 100 ]
+
+## A damping factor relevant for Vanka type smoothers only. It is 
+## responsible for a damping when adding the solution of the local 
+## defect equation onto the global solution. Vanka smoothers tend to 
+## be quite responsive to this value. Although it defaults to 1.0 (no 
+## damping), a value of 0.8 is often a good start. 
+multigrid_vanka_damp_factor: 1.0   [ 0.0, 1.0 ]
+
+## Damping factor for the Jacobi smoother. If chosen below 1, turns 
+## the Jacobi smoother into a damped Jacobi smoother, which is 
+## expected to perform better. 
+jacobi_damp: 1.0   [ 0.0, 1.0 ]
+
+## The overrelaxation parameter (typically called omega). This is 
+## only used for the (symmetric) successive overrelaxation method, 
+## adn only if that one is used as a smoother here.. The overrelaxation 
+## parameter (typically called omega). This is only used for the 
+## (symmetric) successive overrelaxation method. 
+sor_omega: 1.5   [ 0.0, 2.0 ]
+
+## Choose which example to run. Note that depending on the type of 
+## problem you want to solve, different values are meaningful here. 
+## See the derived classes of 'Example2D'. 
+example: 0   [ -5, 200 ]
+
+## Reynolds number: dimensionless number which describes how 
+## viscous the flow is (laminar, turbulent). Re = U.L/nu, where nu is 
+## the kinematic viscosity (=mu/rho).The higher it is, the more 
+## turbulent the flow is. Reynolds number can often be in the order of 
+## magnitude of millions. Then, the classical NSE is not relevant 
+## anymoreto describe the flow. One should in these cases use 
+## turbulence Models,like Smagorinsky or k-eps. Maximum value is 
+## 1000,which already corresponds to a turbulent flow. Default 
+## value is 1.Note that this is also equal to 1/eps, where eps is the 
+## DIMENSIONLESS viscosity (sometimes misleadingly named as nu) 
+## which sometimes appears in the dimensionless Navier-Stokes 
+## equationsinstead of 1/Re. 
+reynolds_number: 1.0   [ 0.0, 1000000.0 ]
+
+## Diffusion coefficient: a factor in front of the diffusion term. 
+diffusion_coefficient: 1.0   [ 0.0, 1.0 ]
+
+## viscosity/permeability: a factor in front of the resistance 
+## term. 
+inverse_permeability: 0.0   [ 0.0, 1000000.0 ]
+
+## permeability coefficient: a factor in front of the resistance 
+## term. 
+permeability: 1.0   [ -2.0, 1000000.0 ]
+
+## viscosity coefficient: a factor in front of the Laplacian or the 
+## resistance term. 
+viscosity: 1.0   [ 0.0, 1000000.0 ]
+
+## effective_viscosity coefficient: a factor in front of the 
+## Laplacian term. 
+effective_viscosity: 1.0   [ 0.0, 1000000.0 ]
+
+## Number of boundary components where Neumann BC are imposed This 
+## variable is used as a preliminary flag. The number of Neumann BC 
+## must match the length of the parameter neumann_id. 
+n_neumann_bd: 0   [ 0, 9 ]
+
+## Component ID of Neumann boundaries. On these edges the terms (hat 
+## p,v.n)_E will be assembled. The values -hat p- are given via the 
+## parameters neumann_values. Attention: at the moment max. 10 
+## boundaries are allowed. This can be easily changed in the file 
+## /home/cristina/software/parmoon/code/src/Examples/Example2D.C 
+neumann_id: (1, 1, 1, 1, 1, 1, 1, 1, 1, 1)   [ 0, 999 ]
+
+## Neumann values to be assigned to the respective boundary. 
+## Warning: the length must be the same as the one given in 
+## neumann_boundary_id 
+neumann_value: (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   [ -100.0, 100.0 ]
+
+## Number of boundary components where Nitsche BC are imposed This 
+## variable is used as a preliminary flag. The number of Nitsche BC 
+## must match the length of the parameter nitsche_id 
+n_nitsche_bd: 0   [ 0, 9 ]
+
+## Component ID of boundaries where the Nitsche method is used to 
+## impose (weak) essential BC. Attention: at the moment max. 10 
+## boundaries are allowed. This can be easily changed in the file 
+## /home/cristina/software/parmoon/code/src/Examples/Example2D.C 
+nitsche_id: (1, 1, 1, 1, 1, 1, 1, 1, 1, 1)   [ 0, 999 ]
+
+## Nitsche penalty (gamma) to be imposed on each boundary 
+nitsche_penalty: (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   [ -100.0, 100.0 ]
+
+## Coefficient for the term -(u,mu dv/dn) Symmetric version 
+## (symmetric_nitsche_u = 1): assemble -(mu du/dn,v)-(u,mu 
+## dv/dn), non-sym (symmetric_nitsche_u = -1): assemble -(mu 
+## du/dn,v)+(u,mu dv/dn) 
+symmetric_nitsche_u: -1   { -1 }
+
+## Coefficient for the term (u.n,q) Symmetric version 
+## (symmetric_nitsche_p = 1): assemble (p,v.n)+(u.n,q), non-sym 
+## (symmetric_nitsche_u = -1): assemble (p,v.n)-(u.n,q) 
+symmetric_nitsche_p: -1   { -1 }
+
+## Coefficient for the corner stablization for penalty-free 
+## Nitsche (Darcy limit) . the stabilization parameter needed for 
+## the Darcy limit of Brinkman in orderto restrict normal jumps of the 
+## velocity across corners of the domain(by default equal to 0) 
+corner_stab: 0.0   [ 0.0, 10000.0 ]
+
+## Number of boundary components where Windkessel (RCR) BC are 
+## imposed This variable is used as a preliminary flag. The number of 
+## Windkessel BC must match the length of the parameter 
+## windkessel_id. 
+n_windkessel_bd: 0   [ 0, 9 ]
+
+## Component ID of windkessel boundaries. On these edges the terms 
+## (hat p,v.n)_E will be assembled. The values -hat p- are computed 
+## from a windkessel model. Attention: at the moment max. 10 
+## boundaries are allowed. This can be easily changed in the file 
+## /home/cristina/software/parmoon/code/src/Examples/Example2D.C 
+windkessel_id: (1, 1, 1, 1, 1, 1, 1, 1, 1, 1)   [ 0, 999 ]
+
+## Proximal resistance to be assigned to the respective Windkessel 
+## boundary. Warning: the length must be the same as the one given in 
+## windkessel_id. 
+windkessel_Rp: (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   [ -100.0, 100.0 ]
+
+## Distal resistance to be assigned to the respective Windkessel 
+## boundary. Warning: the length must be the same as the one given in 
+## windkessel_id. 
+windkessel_Rd: (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   [ -100.0, 100.0 ]
+
+## Capacitance to be assigned to the respective Windkessel 
+## boundary. Warning: the length must be the same as the one given in 
+## windkessel_id. 
+windkessel_C: (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   [ -100.0, 100.0 ]
+
+## Initial distal pressure for Windkessel model 
+windkessel_initial_distal_pressure: (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   [ 0.0, 0.0 ]
+
+## Pressure reference to compute proximal pressure drop in 
+## Windkessel model: dP = (P - windkessel_distal_pressure) = Q * Rp. 
+windkessel_distal_pressure: 0.0   [ 0.0, 0.0 ]
+
+## Limiter in (0,1] to improve convergence with Windkessel BC. 
+## |P_new - P_old| < windkessel_damping_limiter * P_old Zero means 
+## no limiter is used. 
+windkessel_damping_limiter: 0.0   [ 0.0, 1.0 ]
+
+## Some examples for Darcy equations allow jumping permeability 
+## coefficient. Typically this affects a certain part of the domain. 
+## This parameter is the factor with wich the permeability is scaled 
+## inside that subdomain. 
+darcy_permeability_jump: 1.0   [ 0.0, 10000000000.0 ]
+
+## Parameter defining the maximal degree of the polynomial used in 
+## example Polynomial.h. Specify the degree with this parameter. In 
+## principle also degrees greater 50 would be possible. Since the 
+## computations then are very slow the degree is restricted to 50. 
+degree_polynomial: 0   [ 0, 50 ]
+
+## The maximum number of iterations to perform in a non-linear loop. 
+nonlinloop_maxit: 100   [ 0, 1000 ]
+
+## The minimum number of iterations to perform in a non-linear loop. 
+nonlinloop_minit: 1   [ 0, 1000 ]
+
+## At which absolute residual to break the nonlinear loop. 
+nonlinloop_epsilon: 1.000000000000000e-10   [ 0.0, 1.0 ]
+
+## Damping factor 'w' for the nonlinear iteration. The solution of 
+## the k-th iterate will be scaled by 'w'. Then The previous solution, 
+## scaled by '1-w', will be added. Setting to it to zero makes no sense. 
+nonlinloop_damping_factor: 1.0   [ 0.0, 1.0 ]
+
+## Determines at which reduction rate over x iterations(usually x = 
+## 10, see system classes) a convergence is interpretedas too slow 
+## and therefore the iteration is stopped. 
+nonlinloop_slowfactor: 10000000000.0   [ 0.0, 10000000000.0 ]
+
+## Whether or not to scale the absolute residual breaking 
+## criterionwith the square root of the problem size. 
+nonlinloop_scale_epsilon_with_size: false   { true, false }
+
+## If true, not the pure residual is compared to nonlinloop_epsilon 
+## ,but the residual is divided by the norm of the initial right hand 
+## side vector. Note that this is not yet enabled in each problem 
+## class, you must check that, if you plan to use it. 
+nonlinloop_residual_relative_to_rhs: false   { true, false }
+
+## This parameter can control, whether an output methodof a system 
+## class will produce VTK output or not. 
+output_write_vtk: false   { true, false }
+
+## This parameter can control, whether an output method of a system 
+## class will produce xdmf output or not. 
+output_write_xdmf: false   { true, false }
+
+## This parameter controls the output format of the heavy data for the 
+## xdmf file output. 0 means plaintext, 1 means binary, and 2 means 
+## hdf5. 
+output_xdmf_format: 2   [ 0, 2 ]
+
+## This parameter controls the time type of the xdmf file output. 0 
+## means list of discrete values, 1 means a collection of values with 
+## (Start, Stride, Count). 
+output_xdmf_timetype: 1   [ 0, 1 ]
+
+## This parameter can control, whether the xdmf output method stores 
+## the solution data in separate h5 files. 
+separate_h5_files: true   { true, false }
+
+## This parameter controls whether the h5 files written by the 
+## DataWriter class should be compressed by zlib or not. 
+output_compress_h5_files: true   { true, false }
+
+## This parameter controls whether the output should contain the 
+## subdomains for each processor in mpi computations. This is often 
+## useful for debugging. 
+output_write_subdomain_info: false   { true, false }
+
+## Do or do not compute errors after computing a solution. This makes 
+## much sense if an analytical solution is known. If not then it is 
+## often simply set to zero and computing errors then means computing 
+## norms, e.g. the L^2-norm of the solution. 
+output_compute_errors: true   { true, false }
+
+## This directory is where the output is written. This directory will 
+## be created, if it does not exist already. Files in this directory 
+## will be overwritten without any warning. 
+output_directory: .   { . }
+
+## This string is prepended to most files written by ParMooN. This 
+## includes also vtk- and case-files 
+output_basename: parmoon   { parmoon }
+
+## This integer specifies how many (time) steps are performed before 
+## writing the results 
+steps_per_output: 1   { 1 }
+
+## This parameter, when true, allows the output numbering to 
+## continue after a simulation restart, which is often a desirable 
+## behavior. Otherwise, it behaves as if the initial time was 0, and 
+## starts the numbering at 0, leading sometimes to overwritting 
+## existing files. 
+continue_output_after_restart: false   { true, false }
+
+## Do or do not compute time average of the solution. 
+output_compute_time_average: false   { true, false }
+
+## Do or do not write the solution along lines, according to the lines 
+## defined in the nested database used by the class LinesEval, see 
+## EvalTools.h 
+output_along_line: false   { true, false }
+
+## Time at which the time averaging will start. 
+start_time_averaging_at: 0.0   [ 0.0, 10000000000.0 ]
+
+## If set to true, this parameter allows to write the exact solution 
+## into the vtk or case output file. Note: the exact solution must be 
+## specified in the example file 
+output_write_exact_solution: false   { true, false }
+
+## To Compute vorticity and Divergence, vorticity is used to compute 
+## the thickness, Note: the routine is implemented in the example 
+## file 
+compute_vorticity_divergence: false   { true, false }
+
+## This is the start time of the simulation. The total simulated time 
+## interval is [start_time, end_time]. 
+time_start: 0.0   [ -1000.0, 1000.0 ]
+
+## This is the end time of the simulation. The total simulated time 
+## interval is [start_time, end_time]. 
+time_end: 1.0   [ -1000.0, 1000.0 ]
+
+## This is the time step length. Without time adaptivity, it is the 
+## same constant value for all time steps, whereas for time 
+## adaptivity, it only corresponds to the initial value. 
+time_step_length: 0.05   [ 0.0, 0.5 ]
+
+## Determine the time stepping scheme: currently supported are 
+time_discretization: backward_euler   { Runge_Kutta_Heun, backward_euler, bdf_two, crank_nicolson, fractional_step }
+
+## Determine the time stepping scheme to be used for the first step of 
+## bdf_two: currently supported are 
+bdf_two_first_step: backward_euler   { backward_euler, crank_nicolson }
+
+## include the coriolis force for (Navier--)Stokes in 3D. This 
+## requires special local assemblings and the (pde-) coefficients 
+## of the example must include the coriolis force vector Omega. 
+with_coriolis_force: false   { true, false }
+
+## determine the way the laplacian is discretized. 
+laplace_type_deformation: false   { true, false }
+
+## Determine how the nonlinear term for Navier--Stokes is 
+## assembled. convective means ( (u.nabla) u, v), skew_symmetric 
+## means (1/2) [((u.nabla) u, v) - ((u.nabla) v, u)], rotational 
+## means ((nabla x u) x u, v), emac means (D(u)u + div(u)u, v) 
+nse_nonlinear_form: convective   { convective, divergence, emac, rotational, skew_symmetric }
+
+## The type of discretization. Note that not all types are possible 
+## for all problem classes. 
+space_discretization_type: galerkin   { brezzi_pitkaeranta, cip, dg, galerkin, local_projection, local_projection_2_level, nonsymm_gls, pspg, residual_based_vms, smagorinsky, supg, symm_gls, upwind, vms_projection, vms_projection_expl }
+
+## the stabilization parameter for pspg (Pressure Stabilization 
+## Petrov Galerkin) is delta0 * h^2 /nu, where h is a cell measure (e.g. 
+## diameter), nu is the inverse of the reynolds number, and delta0 is 
+## this parameter. This parameter is also used for 
+## Brezzi-Pitkaeranta 
+pspg_delta0: 0.1   [ 0.0, 10.0 ]
+
+## the stabilization parameter for SUPG (Streamline-Upwind Petrov 
+## Galerkin) is delta0 * h^2, where h is a cell measure (e.g. 
+## diameter), delta0 is this parameter. 
+supg_delta0: 0.25   [ 0.0, 10.0 ]
+
+## the stabilization parameter for Grad-Div is delta0 (nu + sigma 
+## L_0^2), where L is a characteristic length (taken equal to 1), nu is 
+## the inverse of the reynolds number, sigma is the inverse of 
+## permeability, and delta0 is this parameter. 
+graddiv_stab: 0.0   [ 0.0, 10000.0 ]
+
+## the stabilization parameter for GLS stabilization is delta0 
+## h^2/(nu + sigma L_0^2), where L_0 is a characteristic length 
+## (taken equal to 1), nu is the inverse of the reynolds number, sigma 
+## is the inverse of permeability, and delta0 is this parameter. 
+gls_stab: 0.0   [ 0.0, 10000.0 ]
+
+## the parameter for relating Stokes with Darcy terms in Brinkman 
+## problem which is a characteristic length (by default equal to 1). 
+L_0: 1.0   [ 0.0, 10000.0 ]
+
+## The stabilization parameter for local projection stabilization 
+## (lps) is delta0 * h^2 / nu, where h is a cell measure (e.g. diameter), 
+## nu is the inverse of the reynolds number, and delta0 is this 
+## parameter. Sometimes (in time-dependent problems) it is set to be 
+## delta0 * hK / nu. 
+lps_delta0: 0.1   [ 0.1, 0.1 ]
+
+## The stabilization parameter for local projection stabilization 
+## (lps) is delta0 * h^2 / nu, where h is a cell measure (e.g. diameter), 
+## nu is the inverse of the reynolds number, and delta0 is 
+## 'lps_delta0'. Sometimes (in time-dependent problems) it is set 
+## to be delta1 * hK / nu, where delta1 is this parameter. 
+lps_delta1: 0.1   [ 0.1, 0.1 ]
+
+## Determine the way the local projection stabilization (lps) 
+## parameter is computed. 
+lps_coeff_type: 0   [ 0, 5 ]
+
+## This parameter enables the use of a tensorial diffusion 
+## coefficient instead or additional to a scalar (multiple of 
+## identity matrix). It is used, e.g., in the branch 'optimization' 
+## for describing longitudinal dispersion based on u*u^T. It can be 
+## scaled via coeff[d+3]. 
+tensorial_diffusion: false   { true, false }
+
+## Choose true if the initial solution is given in a binary file. Do not 
+## forget to specify 'initial_solution_file' in that case, too. 
+read_initial_solution: false   { true, false }
+
+## If 'read_initial_solution' is set to 'true', this parameter 
+## determines from which binary file to read the initial solution. 
+## That file should be prodcued by a former run of the same program, 
+## using the same finite element space. 
+initial_solution_file: my_solution_in.txt   { my_solution_in.txt }
+
+## Choose true if the computed solution should be written out to a file 
+## in a binary format. This is helpful if you plan to read it in as 
+## initial solution later. Do not forget to specify 
+## 'write_solution_binary_all_n_steps' for the output interval 
+## and 'write_solution_binary_file', the file path and name. 
+write_solution_binary: false   { true, false }
+
+## Determine at which interval a backup solution should be written to 
+## the file 'write_solution_binary_file'. The number refers to the 
+## number of timesteps, i.e., at a constant time step length of 0.01s 
+## and this paramter set to 10, the current solution will be written 
+## into the file each 0.1s. 
+write_solution_binary_all_n_steps: 1   [ 1, 1000000 ]
+
+## If 'write_solution_binary' is set to 'true', this parameter sets 
+## the name (and path) of the file to write the solution into. 
+write_solution_binary_file: parmoon_solution_binary   { parmoon_solution_binary }
+
+## Choose true, if the solution binary should be overwritten every 
+## time. If it stays false, a new file will be written every time, with 
+## the current time added to the filename. 
+overwrite_solution_binary: false   { true, false }
+
+## Determine which kind of solver should be used. Set it to direct to 
+## call a direct solver. Set to iterative to call a ParMooN internal 
+## iterative solver. Furthermore it is possible to use the external 
+## library PETSc, see the class PETScSolver. This also includes 
+## direct and iterative solvers. 
+solver_type: direct   { direct, iterative, petsc }
+
+## Setting PETSc arguments as if used from command line. use -pc_type 
+## <pc_arg> for linear solver method <pc_arg> = { lu, ilu, hypre, mg, 
+## ... }(see 
+## https://www.mcs.anl.gov/petsc/petsc-current/docs/manualpages/PC/PCType.html) 
+## use -pc_factor_mat_solver_package <package> for the package 
+## that should be used for the linear solver method <package> = { 
+## umfpack, mumps, superlu, ... }(see 
+## https://www.mcs.anl.gov/petsc/petsc-current/docs/manualpages/Mat/MatSolverPackage.html) 
+## for hypre use -pc_hypre_type <package>(see 
+## https://www.mcs.anl.gov/petsc/petsc-current/docs/manualpages/PC/PCHYPRE.html) 
+petsc_arguments:    {  }
+
+## Determine which type of direct solver should be used. All of them 
+## are implemented in external libraries. 
+direct_solver_type: umfpack   { mumps, pardiso, umfpack }
+
+## Determine which type of iterative solver should be used. 
+iterative_solver_type: fgmres   { bi_cgstab, cg, cgs, fgmres, jacobi, left_gmres, richardson, right_gmres, sor, ssor }
+
+## Maximum number of iterations of the iterative solver. This is used 
+## as a stopping criterion of the iteration. 
+max_n_iterations: 100   [ 0, 100000 ]
+
+## Minimum number of iterations of the iterative solver. This 
+## enforces iterations even of other stopping criteria are already 
+## satisfied. 
+min_n_iterations: 0   { 0, 1, 2, 3, 4, 5, 10 }
+
+## The desired accuracy for the residual using an iterative solver. 
+## This is used as a stopping criterion of the iteration. 
+residual_tolerance: 1.000000000000000e-08   [ 0.0, 10000000000.0 ]
+
+## The factor by which the residual should be reduced. This is used as a 
+## stopping criterion. Whenever the residual is smaller than the 
+## product of the initial residual and this parameter, the iteration 
+## is terminated. A value of 0.0 therefore effectively disables this 
+## stopping criterion. 
+residual_reduction: 0.0   [ 0.0, 1.0 ]
+
+## If the norm of the residual increases by a factor that is larger, the 
+## iteration is stopped and the execution of the code will bestopped, 
+## too. 
+divergence_factor: 10000000000.0   [ 1.0, 1.000000000000000e+36 ]
+
+## The number of gmres iterations until a restart is done. Larger 
+## numbers lead to more memory consumption, smaller numbers 
+## typically mean more iterations. 
+gmres_restart: 20   [ 1, 1000 ]
+
+## Determine the used preconditioner. Note that some of these are 
+## specific for some problem types. 
+preconditioner: no_preconditioner   { augmented_Lagrangian_based, jacobi, least_squares_commutator, least_squares_commutator_boundary, modified_augmented_Lagrangian_based, multigrid, no_preconditioner, semi_implicit_method_for_pressure_linked_equations, sor, ssor, vanka_cell, vanka_cell_jacobi, vanka_nodal }
+
+## The damping in an iteration. A value of 1.0 means no damping while 
+## 0.0 would mean no progress. In general smaller values make 
+## iterations slower. This can still be necessary in cases where the 
+## iterations does not converge at all with larger values. 
+damping_factor: 1.0   [ 0.0, 1.0 ]
+
+## This is the augmentation factor (scalar) for the augmented 
+## Lagrangian based preconditioner.0.0 means no 
+## augmentation.values. 
+gamma: 1.0   [ -10000000000.0, 10000000000.0 ]
+
+## Some solvers produce output during and/or at the end of their 
+## computations. This output will be prefixed by this parameter so 
+## that different solvers of the same kind can be distinguished. For 
+## example, if you have an inner and an outer iteration of the same type 
+## (see, e.g. 'iterative_solver_type') it makes sense to set 
+## 'inner' and 'outer' as this parameter to the respective solver. 
+## This is currently not used for direct solvers. 
+solver_output_prefix:    {  }
+
+## Some solvers produce output during and/or at the end of their 
+## computations. This parameter determines if something is 
+## printed. Smaller values mean less output. This overrides the 
+## value of `Output::getVerbosity()` (which is usually set to the 
+## parameter 'verbosity') during the solving process. A value of 
+## zero means use the global 'verbosity' instead. A value of 1 
+## suppresses most output. 
+solver_verbosity: 2   [ 0, 5 ]
+
+## Type of time discretization for the nonlinear term. The default 
+## (fully_implicit) requires a nonlinear loop in each time step. The 
+## implicit-explicit (imex) scheme only requires one linear solve 
+## for each time step with a changing matrix. The fully-explicit 
+## approach puts the nonlinear term completely on the right-hand 
+## side and therefore requires one linear solve per time step with a 
+## constant matrix. 
+time_discretization_nonlinear_term: fully_implicit   { fully_explicit, fully_implicit, imex }
+
+## This parameter is used whenever you use imex or the fully-explicit 
+## approach to discretize the nonlinear term in time. These schemes 
+## require a velocity solution which can be either the one from the 
+## previous time step (constant) or a linear combination from the 
+## previous two time steps (linear). 
+extrapolation_type: linear   { constant, linear }
+
+## Polynomial order for the velocity space 
+VELOCITY_SPACE: 2   [ 0, 1000 ]
+
+## Polynomial order for the pressure space 
+PRESSURE_SPACE: 1   [ 0, 1000 ]
+
+## indicate which kind of storage layout is used 
+NSTYPE: 14   { 1, 2, 3, 4, 14 }
+

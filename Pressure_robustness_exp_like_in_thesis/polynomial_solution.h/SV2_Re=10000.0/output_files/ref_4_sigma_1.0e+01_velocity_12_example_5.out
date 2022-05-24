@@ -1,0 +1,701 @@
+INFO (Domain): Trying to find a default geometry and mesh  for TwoTriangles and Default_UnitSquare
+INFO (Domain): Loading default domain description: Default_UnitSquare.
+# current date and time: Fri Dec  3 23:12:39 2021
+# ParMooN hg revision: cdaeaa868138
+# ParMooN hg branch  : default
+# ParMooN, local changes: false
+# ParMooN build information: RELEASE, SEQUENTIAL
+# hostname: erhard-10
+# A ParMooN parameter database with 45 parameters and 0 nested databases
+
+# The name of the database.
+[ TimeNavierStokes parameter database ]
+
+outfile: ../Reynolds_nr_Scaling_2021-11-29_19-28-37/polynomial_solution.h/SV2_Re=10000.0/output_files/ref_4_sigma_1.0e+01_velocity_12_example_5.out
+problem_type: 0
+output_write_ps: false
+verbosity: 3
+script_mode: true
+write_snaps: false
+compute_POD_basis: false
+ROM_method: false
+RE_NR: 10000.0
+example: 5
+degree_polynomial: 0
+is_RT_polynomial: false
+boundary_file: Default_UnitSquare
+geo_file: TwoTriangles
+symmetry_DG: 1
+face_sigma_DG: 10
+VELOCITY_SPACE: 12
+refinement_n_initial_steps: 4
+output_directory: ../Reynolds_nr_Scaling_2021-11-29_19-28-37/polynomial_solution.h/SV2_Re=10000.0/xdmf_files
+output_basename: ref_4_sigma_1.0e+01_velocity_12_example_5
+separate_h5_files: false
+nonlinloop_maxit: 100
+nonlinloop_epsilon: 1.000000000000000e-10
+nonlinloop_slowfactor: 1.0
+reynolds_number: 10000.0
+output_write_xdmf: true
+output_xdmf_format: 1
+PRESSURE_SPACE: -4711
+NSTYPE: 3
+LAPLACETYPE: 0
+nse_nonlinear_form: convective
+space_discretization_type: galerkin
+output_compute_errors: true
+FLOW_PROBLEM_TYPE: 3
+USE_ISOPARAMETRIC: 0
+solver_type: direct
+direct_solver_type: umfpack
+solver_verbosity: 2
+max_n_iterations: 10000
+iterative_solver_type: fgmres
+residual_tolerance: 1.000000000000000e-12
+preconditioner: vanka_cell
+INTERNAL_PROBLEM_LINEAR: 1
+damping_factor: 0.5
+multigrid_vanka_damp_factor: 0.5
+>>> Start printing old database (ParamDB) <<<
+HOSTNAME: erhard-10 started on Fri Dec  3 23:12:39 2021
+
+EXECUTED FILE: ./../build/nse2d
+VERSION: 1
+MapperType: 1
+ANSATZ_ORDER: 2
+VELOCITY_SPACE: 12
+PRESSURE_SPACE: -4711
+UPWIND_ORDER: 0
+UPWIND_FLUX_DAMP: 1
+UPWIND_APPLICATION: 0
+NSTYPE: 3
+SIGMA_PERM: 1
+LAPLACETYPE: 0
+USE_ISOPARAMETRIC: 0
+CELL_MEASURE: 0
+FACE_SIGMA: 1
+WEAK_BC_SIGMA: 1
+WEAK_BC: 0
+RE_NR: 10000
+FLOW_PROBLEM_TYPE: 3
+PE_NR: 1
+DELTA0: 1
+SDFEM_TYPE: 2
+DELTA1: 1
+CIP_TYPE: 0
+SOLD_TYPE: 0
+SOLD_PARAMETER_TYPE: 11
+SOLD_CONST: 1
+SOLD_POWER: 1
+SOLD_S: 1
+SOLD_U0: 1
+SOLD_PARAMETER_SCALING: 0
+SOLD_PARAMETER_SCALING_FACTOR: 1
+FILTER_WIDTH_CONSTANT: 2
+FILTER_WIDTH_POWER: 1
+GAUSSIAN_GAMMA: 6
+TURBULENT_VISCOSITY_TYPE: 1
+TURBULENT_VISCOSITY_TENSOR: 0
+TURBULENT_VISCOSITY_CONSTANT: 0.01
+TURBULENT_VISCOSITY_POWER: 1
+TURBULENT_VISCOSITY_SIGMA: 6
+ARTIFICIAL_VISCOSITY_CONSTANT: 1
+ARTIFICIAL_VISCOSITY_POWER: 1
+FRICTION_CONSTANT: 0
+FRICTION_POWER: 0
+FRICTION_TYPE: 0
+FRICTION_U0: 1
+PENETRATION_CONSTANT: 1e+12
+PENETRATION_POWER: -2
+DIV_DIV_STAB_TYPE: 0
+DIV_DIV_STAB_C1: 2
+DIV_DIV_STAB_C2: 1
+OSEEN_ZERO_ORDER_COEFF: 0
+LP_FULL_GRADIENT: 0
+LP_STREAMLINE: 0
+LP_DIVERGENCE: 0
+LP_PRESSURE: 0
+LP_COEFF_TYPE: 0
+LP_FULL_GRADIENT_COEFF: 0
+LP_STREAMLINE_COEFF: 0
+LP_PRESSURE_COEFF: 0
+LP_FULL_GRADIENT_EXPONENT: 1
+LP_STREAMLINE_EXPONENT: 1
+LP_PRESSURE_EXPONENT: 1
+LP_ORDER_DIFFERENCE: 1
+LP_FULL_GRADIENT_ORDER_DIFFERENCE: 1
+LP_STREAMLINE_ORDER_DIFFERENCE: 1
+LP_PRESSURE_ORDER_DIFFERENCE: 1
+P0: 0
+P1: 0
+P2: 0
+P3: 0
+P4: 0
+P5: 0
+P6: 0
+P7: 0
+P8: 0
+P9: 0
+P10: 0
+P11: 0
+P12: 0
+P13: 0
+P14: 0
+P15: 0
+VORTICITY THICKNESS FOR MIXING LAYER (P8): 0
+VMS_ADAPT_LOWER: 0.25
+VMS_ADAPT_MIDDLE: 1
+VMS_ADAPT_UPPER: 3
+VMS_ADAPT_COMP: 1
+SUPERCONVERGENCE_ORDER: 0
+INPUT_QUAD_RULE: 0
+Example: 2d Stokes, polynomial_solution.h.
+         This is Example D.3 in Volker John's book "Finite Element Methods for Incompressible Flow Problems", 2016
+WARNING (The parameter problem_type doesn't correspond neither to NSE nor to Stokes or Brinkman. It is now reset to the default value for NSE (=5).): 
+WARNING (You chose to use Scott-Vogelius finite elements, make sure that the final refinement step is barycentric, see the parameter 'refinement_final_step_barycentric'.): 
+velocity space         2
+pressure space       -11
+INFO (Pressure Projection): BlockFEMatrix identified as enclosed-flow saddle point matrix. Pressure projection enabled.
+STATS (NavierStokes): Mesh data and problem size on finest grid
+ > N_Cells            :         512
+ > h(min, max)        :   0.0883883          0.0883883
+ > dof velocity       :        2178
+ > dof velocity active:        1922
+ > dof pressure       :        1536
+ > dof total          :        3714
+Quadrature formula for triangles is Degree9Tria
+WARNING (UMFPACK): Matrix is singular!
+WARNING (UMFPACK): Matrix is singular!
+--- TIME: time for solving procedure: 0.040197, 0.0422242 s (CPU time, wall time)
+u0 min -2.88788115104  max 2.13994205356
+u1 min -3.65047167805  max 2.21187666473
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 0
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 1
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 2
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 3
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 4
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 5
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 6
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 7
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 8
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 9
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 10
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 11
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 12
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 13
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 14
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 15
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 16
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 17
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 18
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 19
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 20
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 21
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 22
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 23
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 24
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 25
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 26
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 27
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 28
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 29
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 30
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 31
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 32
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 33
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 34
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 35
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 36
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 37
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 38
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 39
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 40
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 41
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 42
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 43
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 44
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 45
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 46
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 47
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 48
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 49
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 50
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 51
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 52
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 53
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 54
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 55
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 56
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 57
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 58
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 59
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 60
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 61
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 62
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 63
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 64
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 65
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 66
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 67
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 68
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 69
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 70
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 71
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 72
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 73
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 74
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 75
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 76
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 77
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 78
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 79
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 80
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 81
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 82
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 83
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 84
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 85
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 86
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 87
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 88
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 89
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 90
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 91
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 92
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 93
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 94
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 95
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 96
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 97
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 98
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 99
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 100
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 101
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 102
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 103
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 104
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 105
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 106
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 107
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 108
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 109
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 110
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 111
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 112
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 113
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 114
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 115
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 116
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 117
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 118
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 119
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 120
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 121
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 122
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 123
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 124
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 125
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 126
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 127
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 128
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 129
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 130
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 131
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 132
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 133
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 134
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 135
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 136
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 137
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 138
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 139
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 140
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 141
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 142
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 143
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 144
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 145
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 146
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 147
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 148
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 149
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 150
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 151
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 152
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 153
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 154
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 155
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 156
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 157
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 158
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 159
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 160
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 161
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 162
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 163
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 164
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 165
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 166
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 167
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 168
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 169
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 170
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 171
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 172
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 173
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 174
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 175
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 176
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 177
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 178
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 179
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 180
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 181
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 182
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 183
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 184
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 185
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 186
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 187
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 188
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 189
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 190
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 191
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 192
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 193
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 194
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 195
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 196
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 197
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 198
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 199
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 200
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 201
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 202
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 203
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 204
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 205
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 206
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 207
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 208
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 209
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 210
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 211
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 212
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 213
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 214
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 215
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 216
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 217
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 218
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 219
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 220
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 221
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 222
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 223
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 224
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 225
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 226
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 227
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 228
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 229
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 230
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 231
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 232
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 233
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 234
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 235
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 236
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 237
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 238
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 239
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 240
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 241
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 242
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 243
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 244
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 245
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 246
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 247
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 248
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 249
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 250
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 251
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 252
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 253
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 254
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 255
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 256
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 257
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 258
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 259
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 260
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 261
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 262
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 263
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 264
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 265
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 266
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 267
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 268
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 269
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 270
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 271
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 272
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 273
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 274
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 275
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 276
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 277
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 278
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 279
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 280
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 281
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 282
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 283
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 284
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 285
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 286
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 287
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 288
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 289
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 290
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 291
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 292
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 293
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 294
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 295
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 296
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 297
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 298
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 299
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 300
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 301
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 302
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 303
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 304
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 305
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 306
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 307
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 308
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 309
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 310
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 311
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 312
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 313
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 314
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 315
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 316
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 317
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 318
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 319
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 320
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 321
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 322
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 323
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 324
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 325
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 326
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 327
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 328
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 329
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 330
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 331
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 332
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 333
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 334
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 335
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 336
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 337
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 338
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 339
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 340
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 341
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 342
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 343
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 344
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 345
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 346
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 347
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 348
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 349
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 350
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 351
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 352
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 353
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 354
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 355
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 356
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 357
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 358
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 359
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 360
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 361
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 362
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 363
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 364
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 365
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 366
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 367
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 368
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 369
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 370
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 371
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 372
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 373
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 374
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 375
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 376
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 377
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 378
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 379
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 380
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 381
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 382
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 383
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 384
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 385
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 386
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 387
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 388
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 389
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 390
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 391
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 392
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 393
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 394
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 395
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 396
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 397
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 398
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 399
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 400
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 401
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 402
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 403
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 404
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 405
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 406
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 407
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 408
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 409
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 410
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 411
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 412
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 413
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 414
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 415
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 416
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 417
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 418
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 419
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 420
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 421
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 422
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 423
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 424
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 425
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 426
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 427
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 428
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 429
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 430
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 431
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 432
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 433
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 434
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 435
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 436
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 437
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 438
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 439
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 440
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 441
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 442
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 443
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 444
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 445
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 446
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 447
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 448
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 449
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 450
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 451
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 452
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 453
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 454
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 455
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 456
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 457
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 458
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 459
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 460
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 461
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 462
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 463
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 464
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 465
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 466
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 467
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 468
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 469
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 470
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 471
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 472
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 473
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 474
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 475
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 476
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 477
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 478
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 479
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 480
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 481
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 482
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 483
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 484
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 485
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 486
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 487
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 488
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 489
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 490
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 491
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 492
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 493
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 494
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 495
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 496
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 497
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 498
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 499
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 500
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 501
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 502
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 503
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 504
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 505
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 506
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 507
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 508
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 509
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 510
+WARNING (TFEFunction2D::compute_cell_wise_min_max_function_eval): Method was not successful on cell 511
+WARNING: TFEFunction2D::MinMax was not successful!
+ DataWriter:: writing ../Reynolds_nr_Scaling_2021-11-29_19-28-37/polynomial_solution.h/SV2_Re=10000.0/xdmf_files/ref_4_sigma_1.0e+01_velocity_12_example_5.xdmf
+--- TIME: time for writing vtk/xdmf files: 0.002985, 0.03143 s (CPU time, wall time)
+Maximal pointwise error appeared in: 0.18879 0.969395 value: 0.135197
+Maximal pointwise error appeared in: 0.0273181 0.679636 value: 0.243631
+Maximal pointwise error is zero
+--------------------------------------------
+STATS (NavierStokes): Measured errors
+ > L2(u)     : 0.049503577552151
+ > L2(div(u)): 1.9486738413119e-12
+ > H1-semi(u): 2.5420192115858
+ > L2(p)     : nan
+ > H1-semi(p): nan
+ > L2(u)_boundary: 0
+ > L2(u.n)_boundary: 0
+--------------------------------------------
+INFO (Example_NSE2D): No post processing done for the current example.
+--- TIME: time for complete NSE2D_ParMooN program: 0.149228, 0.1797 s (CPU time, wall time)

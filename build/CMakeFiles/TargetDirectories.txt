@@ -1,0 +1,3 @@
+/Home/guests/melnic/Master_Thesis_Experiments/build/CMakeFiles/rebuild_cache.dir
+/Home/guests/melnic/Master_Thesis_Experiments/build/CMakeFiles/edit_cache.dir
+/Home/guests/melnic/Master_Thesis_Experiments/build/CMakeFiles/nse2d.dir
