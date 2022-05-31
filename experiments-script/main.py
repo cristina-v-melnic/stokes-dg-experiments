@@ -38,13 +38,25 @@ h5_file_name = "data.h5"
 date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 ###############################################################################
 
+#_______________________________________________________________________________
+
+# PART I: Preparation of the input ".dat" files needed for the simulations.
 
 def create_dictionary(computation_dir):
     """
         Here we create a dictionary 'inputs' whose keys are strings which are
         ParMooN parameters. Their value is the value one wants to set in the
         resulting input file.
-        """
+        
+        :param computation_dir: (str) 
+        	The directory where the results of this particular experiment will be stored.
+        	Usually generated with the get_computation_dir() function, before calling 
+        	create_dictionary() for the specific experiment.
+    	
+    	:return: (dict)
+    		A dictionary of with all relevant parameters to add to the dat file in order
+    		to run the simulation with parmoon. 
+    """
     inputs = collections.OrderedDict()
     # Taken from nse_2d_dg_test.c++
     inputs["RE_NR"] = 10
@@ -128,7 +140,11 @@ def write_to_file(filename, dictionary):
 
 
 def check_directory(dir):
-    """ check if directories exist and if not create it. """
+    """ Check if directories exist and if not create them.
+    
+    :param dir: (str) 
+    	The directory name to be created in the parent directory.
+    """
     dir = os.path.join(parent_dir, dir)
     if not os.path.exists(dir):
         os.makedirs(dir)
@@ -137,9 +153,23 @@ def check_directory(dir):
         exit(0)
 
 
-def get_computation_dir(name="None"):
-    """Create a directory with the current time and date as part of the
-    filename and return that name. """
+def get_computation_dir(name = "None"):
+    """
+    Create a directory with the current time and date as part of the
+    filename and return that name. 
+    
+    :param name: (str), optional 
+        The name of the directory where the results of this particular
+        experiment will be stored. By default it is given a name with 
+        the date and the time of the run. 
+       
+    	
+    :return:
+    	The directory of the experiment containing other structured
+    	directories needed for storing data, such as the input, output,
+    	xdfm and results directories.
+    	
+    """
 
     # name of a directory where all output of this script goes
     if name != "None":
@@ -156,19 +186,29 @@ def get_computation_dir(name="None"):
 
 
 def find_keys_and_replace_values(file, keys, values, next_file):
-    '''
-    This method copies the contents from "file" to "next_file" (can be different or the same,
-     in the latter case, the content is overwritten), while changing the values of the parameters
-     to correspond to the current dictionary from the method "create_dictionary()".
+    """
+    This function copies the contents from "file" to "next_file" (can be different or the same,
+    in the latter case, the content is overwritten), while changing the values of the parameters
+    to correspond to the current dictionary from the method "create_dictionary()".
 
-    :param file: the name of the file from which to copy the text and modify the values
-    :param keys: a list of keys corresponding to values that need to be changed in the new file,
-                    if there is only one term, use the format [#key]
-    :param values: a list of values that need to be changed in the new file,
-                    if there is only one term, use the format [#value]
-    :param next_file: the name if the file with changed values and the same text
+    :param file: (str)
+    	The name of the file from which to copy the text and modify the values.
+    	Usually one with the extension ".dat", found in the same directory as the main.py.
+    	By default the "nse2d_dg_reference.dat" file must be used.
+    :param keys: list of (str)
+    	A list of keys corresponding to values that need to be changed in the desired 
+    	simulation. If there is only one term, use the format [#key].
+    :param values: list of data types appropriate to the parameters
+    	A list of values that need to be changed in the new file, if there is only one
+    	term, use the format [#value].
+    :param next_file: 
+    	The name of the file with changed values and the same text to be used to run
+    	the desired parmoon simulation.
+    
     :return:
-    '''
+    	A ".dat" file in the appropriate directory, ready for the desired parmoon simulation,
+    	i.e., with changed selected parameters. 
+    """
 
     with open(file, 'r') as f:
         text = f.readlines()
@@ -196,28 +236,54 @@ def find_keys_and_replace_values(file, keys, values, next_file):
 
 
 def test_verbosity_values(initial_file):
-    '''
-    :return: creates new directories and 5 new files in input_files with
-    different values of verbosity [1,5] and script_mode {true, false}, all of them are copies of the initial_file
-    with changed parameters
-
-    '''
+    """ 
+    Creates a new directory and 5 new files in input_files with
+    different values of verbosity [1,5] and script_mode {true, false},
+    all of them are copies of the initial_file with changed parameters.
+    
+    :param initial_file: (str)
+    	The name of the reference ".dat" file containing the keys and values.
+    
+    :return:
+    	A new directory and ".dat" files ready to be run for simulations
+    	with different verbosities and adjustable script mode.
+    """
     comp_dir = get_computation_dir()
     dictionary = create_dictionary(comp_dir)
-    for i in range(6, 7):
+    
+    for i in range(1, 5):
         dictionary["verbosity"] = i
         find_keys_and_replace_values(initial_file, list(dictionary.keys()), list(dictionary.values()),
-                                     comp_dir + "/" + input_directory + "/" + "nse2d_{}.dat".format(i))
+                                     comp_dir + "/" + input_directory + "/" + "nse2d_{}.dat".format(i))                             
         dictionary["script_mode"] = "false"
 
-
-def check_f1_f2():
-    dictionary = create_dictionary(os.path)
-    find_keys_and_replace_values("file_1", list(
-        dictionary.keys()), list(dictionary.values()), "file_2")
+# END OF PART I: Input functions
+#___________________________________________________________________________
 
 
-def get_refinement_experiment(directory_name="None", example_nr=20, velocity=1011, RT="false", discret_type="dg", nu_inv_factor=10.0, face_sigma=10, symmetry = 1):
+#___________________________________________________________________________
+# PART II: The simulation functions used for numerical experiments.
+
+def get_refinement_experiment(directory_name = "None", example_nr = 20, velocity = 1011, RT = "false",
+                                discret_type = "dg", nu_inv_factor = 10.0, face_sigma = 10, symmetry = 1):
+    """
+    Function to generate convergence histories, i.e, how the results of the 
+    simulations evolve upon grid refinement.
+    
+    :param directory_name: (str)
+    :param example_nr: (int)
+    :param velocity: (int) 1___
+    :param RT: {true, false}
+    :param discret_type: (str)	
+    :param nu_inv_factor: (float)
+    :param face_sigma: (float)
+    :param symmetry: (int) {-1, 0, 1}
+    
+    :return:
+    	Parmoon simulation results for the given example ("example_nr"), using
+    	the given velocity space ("velocity"), discretization type ("discret_type") 
+    	and the sigma ("face_sigma") and "symmetry" for the case of the "dg" formulation.
+    """
     comp_dir = get_computation_dir(directory_name)
     dictionary = create_dictionary(comp_dir)
 
@@ -249,7 +315,19 @@ def get_refinement_experiment(directory_name="None", example_nr=20, velocity=101
                   "/" + input_directory + "/inputfile_{}.dat".format(i))
 
 
-def loop_refinement_all_examples(experiment_name="Refinement_Experiments"+"_{}".format(date)):
+def loop_refinement_all_examples(experiment_name = "Refinement_Experiments"+"_{}".format(date)):
+    """
+    Function to generate a set of convergence histories with different
+    examples, velocity spaces and discretization types in order to compare
+    the optimality of different methods.
+    
+    :param experiment_name: (str), optional
+    
+    :return:
+    	Parmoon simulation results in the following order experiment_directory,
+    	a directory for each example, then a directory with each velocity space. 
+    	
+    """	
     check_directory(experiment_name)
     examples = collections.OrderedDict()
 
@@ -289,7 +367,7 @@ def loop_refinement_all_examples(experiment_name="Refinement_Experiments"+"_{}".
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "SV4", example_nr, velocity = 14, discret_type = "galerkin")
 
 
-def get_Re_nr_scaling(experiment_name="Reynolds_nr_Scaling"+"_{}".format(date)):
+def get_Re_nr_scaling(experiment_name = "Reynolds_nr_Scaling"+"_{}".format(date)):
 
     check_directory(experiment_name)
     examples = collections.OrderedDict()
@@ -302,8 +380,10 @@ def get_Re_nr_scaling(experiment_name="Reynolds_nr_Scaling"+"_{}".format(date)):
     nu_inv_factors = [1.0, 100.0, 10000.0, 1000000.0]
 
     for example_nr in examples.keys():
+        
         example_name = examples[example_nr]
         check_directory(experiment_name + "/" + example_name)
+        
         for nu_inv in nu_inv_factors:
             get_refinement_experiment(experiment_name + "/" + example_name + "/" + "BDM1_Re={}".format(
                 nu_inv), example_nr, velocity=1011, discret_type="dg", nu_inv_factor=nu_inv)
@@ -330,11 +410,11 @@ def get_Re_nr_scaling(experiment_name="Reynolds_nr_Scaling"+"_{}".format(date)):
                 
             get_refinement_experiment(experiment_name + "/" + example_name + "/" + "SV2_Re={}".format(
                 nu_inv), example_nr, velocity = 12, discret_type = "galerkin", nu_inv_factor=nu_inv)
-        get_refinement_experiment(experiment_name + "/" + example_name + "/" + "SV3_Re={}".format(
+            get_refinement_experiment(experiment_name + "/" + example_name + "/" + "SV3_Re={}".format(
                 nu_inv), example_nr, velocity = 13, discret_type = "galerkin", nu_inv_factor=nu_inv)
 
 
-def check_optimal_sigma(RE_NR=10):
+def check_optimal_sigma(RE_NR = 10):
 
     
     examples = collections.OrderedDict()
@@ -389,7 +469,9 @@ def loop_sigma_search(sigma, examples, experiment_name):
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "RT1_sigma={}_symm={}".format(
                 sigma[s], 0), example_nr, velocity=1001, discret_type="dg", face_sigma=sigma[s], symmetry = 0)	
 	
-	
+
+# END OF PART II: Experiment functions
+#_____________________________________________________________________________________________________________	
 
 if __name__ == '__main__':
     check_optimal_sigma()
