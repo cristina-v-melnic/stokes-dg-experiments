@@ -368,7 +368,19 @@ def loop_refinement_all_examples(experiment_name = "Refinement_Experiments"+"_{}
 
 
 def get_Re_nr_scaling(experiment_name = "Reynolds_nr_Scaling"+"_{}".format(date)):
-
+    """
+    Function to study pressure robustness by generating sets of convergence
+    histories with different Reynolds number and observing whether or not they 
+    differ.
+    
+    :param experiment_name: (str), optional
+    
+    :return:
+    	Parmoon simulation results in the following order experiment_directory,
+    	a directory for each example, then a directory for every combination of
+    	a particular Re and each velocity space. 
+    	
+    """	
     check_directory(experiment_name)
     examples = collections.OrderedDict()
 
@@ -415,7 +427,18 @@ def get_Re_nr_scaling(experiment_name = "Reynolds_nr_Scaling"+"_{}".format(date)
 
 
 def check_optimal_sigma(RE_NR = 10):
-
+    """
+    Function to determine the optimal choice of the sigma parameter for dg 
+    by comparing the magnitudes of errors from simulations across ranges of 
+    values for sigma.
+    	    
+    :param RE_NR: (float), optional
+    
+    :return:
+    	Parmoon simulation results in the following order: 3 experiment directories,
+    	for each range of sigma values, a directory for each example, then a directory
+    	for every combination of a particular sigma value and each velocity space.
+    """		
     
     examples = collections.OrderedDict()
 
@@ -447,6 +470,18 @@ def check_optimal_sigma(RE_NR = 10):
     
 
 def loop_sigma_search(sigma, examples, experiment_name):
+    """
+    Function to generate convergence histories for every value
+    of sigma used in the function check_optimal_sigma().
+    
+    :param RE_NR: list of (float)
+    :param examples: list of (str)
+    :param experiment_name: (str)
+
+    :return:
+    	Simulation results for all sigma values in the directory
+    	structure given by the get_refinement_experiment() function.
+    """
     check_directory(experiment_name)
 	
     for example_nr in examples.keys():
@@ -455,25 +490,35 @@ def loop_sigma_search(sigma, examples, experiment_name):
     for s in range(len(sigma)):
             # BDM1 with all types of symmetry SIPG, NIPG and IPG
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "BDM1_sigma={}_symm={}".format(
-                sigma[s], 1), example_nr, velocity=1011, discret_type="dg", face_sigma=sigma[s], symmetry = 1)
+                sigma[s], 1), example_nr, velocity = 1011, discret_type = "dg", face_sigma = sigma[s], symmetry = 1)
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "BDM1_sigma={}_symm={}".format(
-                sigma[s], -1), example_nr, velocity=1011, discret_type="dg", face_sigma=sigma[s], symmetry = -1)
+                sigma[s], -1), example_nr, velocity = 1011, discret_type = "dg", face_sigma = sigma[s], symmetry = -1)
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "BDM1_sigma={}_symm={}".format(
-                sigma[s], 0), example_nr, velocity=1011, discret_type="dg", face_sigma=sigma[s], symmetry = 0)
+                sigma[s], 0), example_nr, velocity = 1011, discret_type = "dg", face_sigma = sigma[s], symmetry = 0)
             
             # RT1 with all types of symmetry SIPG, NIPG and IPG
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "RT1_sigma={}_symm={}".format(
-                sigma[s], 1), example_nr, velocity=1001, discret_type="dg", face_sigma=sigma[s], symmetry = 1)
+                sigma[s], 1), example_nr, velocity = 1001, discret_type = "dg", face_sigma = sigma[s], symmetry = 1)
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "RT1_sigma={}_symm={}".format(
-                sigma[s], -1), example_nr, velocity=1001, discret_type="dg", face_sigma=sigma[s], symmetry = -1)
+                sigma[s], -1), example_nr, velocity = 1001, discret_type = "dg", face_sigma = sigma[s], symmetry = -1)
         get_refinement_experiment(experiment_name + "/" + example_name + "/" + "RT1_sigma={}_symm={}".format(
-                sigma[s], 0), example_nr, velocity=1001, discret_type="dg", face_sigma=sigma[s], symmetry = 0)	
+                sigma[s], 0), example_nr, velocity = 1001, discret_type = "dg", face_sigma = sigma[s], symmetry = 0)	
 	
 
 # END OF PART II: Experiment functions
 #_____________________________________________________________________________________________________________	
 
 if __name__ == '__main__':
-    check_optimal_sigma()
-    #loop_refinement_all_examples()
-    #get_Re_nr_scaling()
+    
+    # To obtain convergence history data for specified examples, uncomment below. 	
+    loop_refinement_all_examples()
+    
+    # To obtain convergence history data for different Re values to check for 
+    # pressure robustness uncomment below.
+    #get_Re_nr_scaling()   	
+    
+    # To obtain convergence history data for different values of sigma to find
+    # the appropriate parameter uncomment below.
+    #check_optimal_sigma()
+    
+    
