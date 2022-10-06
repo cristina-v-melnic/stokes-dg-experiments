@@ -23,6 +23,6 @@ The analysis of the generated datasets by the simulations above is contained in 
 (For discussions and graphics see sections 4.2.- 4.4. and the appendix of the [master thesis](https://github.com/cristina-v-melnic/stokes-dg-experiments/blob/main/Master_Thesis_signed.pdf).)
 
 ## Credits
-This work was part of my master's thesis project with Prof. Dr. Volker John, Derk Frerichs and Dr. Ulrich Wilbrandt from the
+This work was part of my master thesis project with Prof. Dr. Volker John, Derk Frerichs and Dr. Ulrich Wilbrandt from the
 "Numerical Mathematics and Scientific Computing" group at the Weierstrass Institute Berlin. It was financially supported by
 the DAAD funding of my master's studies, and the "WIAS Female Master Students Program" funding of my research assistanship.
